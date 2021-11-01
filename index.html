@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>My name is Dmitriy Grushin and my favorite hobby is playing co-op games with my friends.
+        The current time is: <span></span>
+    </h1>
+</body>
+<!--Internal Script for convenience-->
+<script>
+    function getTime() {
+        let myDate = new Date();
+        let hour = myDate.getHours();
+        let minute = myDate.getMinutes();
+        let second = myDate.getSeconds();
+        let mySpan = document.querySelector('span'); // select span
+
+        // Make this a 12 Hour Clock
+        if (hour > 12) {
+            hour -= 12;
+        }
+
+        // if time reaches midnight 
+        if (hour === 0) {
+            hour = 12;
+        }
+
+        let currentTime = `${hour}:${minute}:${second}`;
+        mySpan.innerHTML = currentTime; // add curren time inside of the span
+
+        // run getTime() every 500ms to get current time
+        setTimeout(function () {
+            getTime()
+        }, 500);
+    }
+
+    getTime();
+</script>
+</html>
